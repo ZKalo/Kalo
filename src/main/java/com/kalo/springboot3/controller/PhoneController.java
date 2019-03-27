@@ -45,12 +45,12 @@ public class PhoneController {
     }
 
 
-    @GetMapping(path = "/shiro")
+    @GetMapping(value = "/shiro")
     public String shiro(String name,String password){
         System.out.println("+++++++++++++++  进入controller层 +++++++++++");
         System.out.println("name----"+name+"    password-----"+password);
         People people = mapper.findByName(name);
-        System.out.println("查出来*********");
+        System.out.println("查出来*******");
         System.out.println(people.toString());
         UsernamePasswordToken token = new UsernamePasswordToken(name, password);
         Subject subject = SecurityUtils.getSubject();
@@ -61,8 +61,8 @@ public class PhoneController {
         return "shiro.html";
     }
 
-    //@RequiresAuthentication()
-    @RequiresPermissions("kalo")
+    @RequiresAuthentication()
+    //@RequiresPermissions("kalo")
     @GetMapping(path = "/shiroT")
     public String shiroT(){
         System.out.println("+++++++++++++++  进入shiroT方法controller层 +++++++++++");
